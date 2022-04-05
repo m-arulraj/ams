@@ -10,6 +10,8 @@ public class AmsConstants {
 
     public static final Double ACCOUNT_OPENING_BALANCE = 10000.00;
 
+    public static final String COMMON_DATE_FORMAT = "yyyy-MM-dd";
+
     public static final String TRANSACTION_TYPE_DEBIT = "Debit";
     public static final String TRANSACTION_TYPE_CREDIT = "Credit";
 
