@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ec2-34-231-63-30.compute-1.amazonaws.com:5432/d5ereej4b9jt10?sslmode=require
+    username: hrmekihfemuhhv
+    password: 8256cf99765a7d899f8c61d0aa90d3f9a9efb1d57c9c72cffaa224e6cb88d048
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 20000
+      idle-timeout: 10000
+      auto-commit: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
