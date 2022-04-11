@@ -7,6 +7,6 @@ public class AccountDetails {
 
     private Long accountNumber;
     private String accountHolderName;
-    private Double accountBalance;
+    private Double currentBalance;
 
 }

@@ -15,20 +15,23 @@ public class User {
     @Column(name = "USER_ID")
     private Long userId;
 
-    @Column(name = "FIRST_NAME")
+    @Column(name = "FIRST_NAME", length = 50)
     private String firstName;
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "LAST_NAME", length = 50)
     private String lastName;
 
     @Column(name = "DOB")
     private Date dob;
 
-    @Column(name = "GENDER")
+    @Column(name = "GENDER", length = 1)
     private String gender;
 
-    @Column(name = "PAN_NUMBER")
+    @Column(name = "PAN_NUMBER", length = 10)
     private String panNumber;
+
+    @Column(name = "PHONE_NUMBER", length = 10)
+    private Long phoneNumber;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "EMAIL_ID")

@@ -2,6 +2,7 @@ package com.abcbank.ams.controller;
 
 import com.abcbank.ams.common.exception.AmsException;
 import com.abcbank.ams.model.AccountDetails;
+import com.abcbank.ams.model.BeneficiaryDetails;
 import com.abcbank.ams.service.AccountService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.OK).body(accountService.getAccountSummary(userId));
     }
 
-    @GetMapping(value = "/all")
-    public ResponseEntity<List<AccountDetails>> getAllAccounts() {
-        return ResponseEntity.status(HttpStatus.OK).body(accountService.getAllAccounts());
+    @GetMapping(value = "/beneficiary/all")
+    public ResponseEntity<List<BeneficiaryDetails>> getAllBeneficiaries() {
+        return ResponseEntity.status(HttpStatus.OK).body(accountService.getAllBeneficiaries());
     }
 
 }

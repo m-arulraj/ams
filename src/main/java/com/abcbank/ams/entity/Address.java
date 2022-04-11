@@ -14,22 +14,22 @@ public class Address {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "DOOR_NUMBER")
+    @Column(name = "DOOR_NUMBER", length = 50)
     private String doorNumber;
 
-    @Column(name = "STREET")
+    @Column(name = "STREET", length = 50)
     private String street;
 
-    @Column(name = "AREA")
+    @Column(name = "AREA", length = 50)
     private String area;
 
-    @Column(name = "CITY")
+    @Column(name = "CITY", length = 50)
     private String city;
 
-    @Column(name = "STATE")
+    @Column(name = "STATE", length = 2)
     private String state;
 
-    @Column(name = "PINCODE")
+    @Column(name = "PINCODE", length = 6)
     private Integer pincode;
 
 }

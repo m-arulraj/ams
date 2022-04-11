@@ -3,7 +3,9 @@ package com.abcbank.ams.service.impl;
 import com.abcbank.ams.entity.Account;
 import com.abcbank.ams.entity.User;
 import com.abcbank.ams.mapper.AccountMapper;
+import com.abcbank.ams.mapper.BeneficiaryMapper;
 import com.abcbank.ams.model.AccountDetails;
+import com.abcbank.ams.model.BeneficiaryDetails;
 import com.abcbank.ams.repository.AccountRepository;
 import com.abcbank.ams.repository.UserRepository;
 import com.abcbank.ams.service.AccountService;
@@ -28,11 +30,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountDetails> getAllAccounts() {
+    public List<BeneficiaryDetails> getAllBeneficiaries() {
         List<Account> accounts = accountRepository.findAll();
-        List<AccountDetails> accountDetailsList = AccountMapper.INSTANCE.map(accounts);
-        accountDetailsList.forEach(a -> a.setAccountBalance(null));
-        return accountDetailsList;
+        return BeneficiaryMapper.INSTANCE.map(accounts);
     }
 
 }

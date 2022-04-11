@@ -12,9 +12,6 @@ public class AmsConstants {
 
     public static final String COMMON_DATE_FORMAT = "yyyy-MM-dd";
 
-    public static final String TRANSACTION_TYPE_DEBIT = "Debit";
-    public static final String TRANSACTION_TYPE_CREDIT = "Credit";
-
     public static final String MESSAGE_USER_PROFILE_CREATED = "User Profile Created Successfully";
     public static final String MESSAGE_USER_PROFILE_UPDATED = "User Profile Updated Successfully";
     public static final String MESSAGE_USER_PASSWORD_UPDATED = "User Password Updated Successfully";
