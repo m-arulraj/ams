@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
         Account account = new Account();
         account.setAccountHolderName(user.getFirstName() + " " + user.getLastName());
-        account.setAccountBalance(AmsConstants.ACCOUNT_OPENING_BALANCE);
+        account.setCurrentBalance(AmsConstants.ACCOUNT_OPENING_BALANCE);
         userEntity.setAccount(account);
 
         UserCredentials userCredentials = new UserCredentials();
@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setDob(user.getDob());
         userEntity.setGender(user.getGender());
         userEntity.setPanNumber(user.getPanNumber());
+        userEntity.setPhoneNumber(user.getPhoneNumber());
         userEntity.setCurrentAddress(AddressMapper.INSTANCE.map(user.getCurrentAddress()));
         userEntity.setPermanentAddress(AddressMapper.INSTANCE.map(user.getPermanentAddress()));
         userRepository.save(userEntity);

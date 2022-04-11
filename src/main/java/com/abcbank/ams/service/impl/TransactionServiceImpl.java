@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -41,16 +40,16 @@ public class TransactionServiceImpl implements TransactionService {
     @Transactional
     public void createTransaction(TransactionDetails transactionDetails) {
         Account senderAccount = accountRepository.getById(transactionDetails.getSenderAccountNumber());
-        Double senderAccountBalance = senderAccount.getAccountBalance();
+        Double senderAccountBalance = senderAccount.getCurrentBalance();
         senderAccountBalance = senderAccountBalance - transactionDetails.getAmount();
-        senderAccount.setAccountBalance(senderAccountBalance);
+        senderAccount.setCurrentBalance(senderAccountBalance);
         accountRepository.save(senderAccount);
         log.info("Rs.{} debited from Account ID #{}", transactionDetails.getAmount(), transactionDetails.getSenderAccountNumber());
 
         Account receiverAccount = accountRepository.getById(transactionDetails.getReceiverAccountNumber());
-        Double receiverAccountBalance = receiverAccount.getAccountBalance();
+        Double receiverAccountBalance = receiverAccount.getCurrentBalance();
         receiverAccountBalance = receiverAccountBalance + transactionDetails.getAmount();
-        receiverAccount.setAccountBalance(receiverAccountBalance);
+        receiverAccount.setCurrentBalance(receiverAccountBalance);
         accountRepository.save(receiverAccount);
         log.info("Rs.{} credited to Account ID #{}", transactionDetails.getAmount(), transactionDetails.getReceiverAccountNumber());
 
@@ -68,24 +67,12 @@ public class TransactionServiceImpl implements TransactionService {
         toDate = calendar.getTime();
 
         User user = userRepository.getById(userId);
-        List<TransactionDetails> transactionDetailsList =  new ArrayList<>();
+        Long userAccountNumber = user.getAccount().getAccountNumber();
+        List<Transaction> transactions =
+                transactionRepository.findTransactionsByReceiverAccountNumberOrSenderAccountNumberAndTransactionDateBetween(
+                        userAccountNumber, userAccountNumber, fromDate, toDate);
 
-        List<Transaction> creditTransactions =
-                transactionRepository.findTransactionsByReceiverAccountNumberAndTransactionDateBetween(
-                        user.getAccount().getAccountNumber(),fromDate,toDate);
-        List<TransactionDetails> creditTransactionDetailsList = TransactionMapper.INSTANCE.map(creditTransactions);
-        creditTransactionDetailsList.forEach(t -> t.setType(AmsConstants.TRANSACTION_TYPE_CREDIT));
-
-        List<Transaction> debitTransactions =
-                transactionRepository.findTransactionsBySenderAccountNumberAndTransactionDateBetween(
-                        user.getAccount().getAccountNumber(),fromDate,toDate);
-        List<TransactionDetails> debitTransactionDetailsList = TransactionMapper.INSTANCE.map(debitTransactions);
-        debitTransactionDetailsList.forEach(t -> t.setType(AmsConstants.TRANSACTION_TYPE_DEBIT));
-
-        transactionDetailsList.addAll(creditTransactionDetailsList);
-        transactionDetailsList.addAll(debitTransactionDetailsList);
-
-        return transactionDetailsList;
+        return TransactionMapper.INSTANCE.map(transactions);
     }
 
 }

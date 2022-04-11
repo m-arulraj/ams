@@ -13,6 +13,7 @@ public class UserDetails {
     private Date dob;
     private String gender;
     private String panNumber;
+    private Long phoneNumber;
     private String emailId;
     private String password;
     private UserAddress currentAddress;

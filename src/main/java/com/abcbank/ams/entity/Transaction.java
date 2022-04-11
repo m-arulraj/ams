@@ -24,9 +24,6 @@ public class Transaction {
     @Column(name = "TRANSACTION_DATE")
     private Date transactionDate;
 
-    @Column(name = "BENEFICIARY_NAME")
-    private String beneficiaryName;
-
     @Column(name = "SENDER_ACCOUNT_NUMBER")
     private Long senderAccountNumber;
 
@@ -36,7 +33,7 @@ public class Transaction {
     @Column(name = "AMOUNT")
     private Double amount;
 
-    @Column(name = "REMARKS")
+    @Column(name = "REMARKS", length = 1000)
     private String remarks;
 
 }

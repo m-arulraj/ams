@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-    List<Transaction> findTransactionsBySenderAccountNumberAndTransactionDateBetween(Long senderAccountNumber, Date from, Date to);
-    List<Transaction> findTransactionsByReceiverAccountNumberAndTransactionDateBetween(Long receiverAccountNumber, Date from, Date to);
+    List<Transaction> findTransactionsByReceiverAccountNumberOrSenderAccountNumberAndTransactionDateBetween(
+            Long receiverAccountNumber, Long senderAccountNumber, Date from, Date to);
 
 }

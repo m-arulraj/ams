@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class UserCredentials {
 
     @Id
-    @Column(name = "EMAIL_ID")
+    @Column(name = "EMAIL_ID", length = 100)
     private String emailId;
 
     @Column(name = "PASSWORD")

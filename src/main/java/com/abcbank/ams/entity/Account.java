@@ -20,10 +20,10 @@ public class Account {
     @Column(name = "ACCOUNT_NUMBER")
     private Long accountNumber;
 
-    @Column(name = "ACCOUNT_HOLDER_NAME")
+    @Column(name = "ACCOUNT_HOLDER_NAME", length = 100)
     private String accountHolderName;
 
-    @Column(name = "ACCOUNT_BALANCE")
-    private Double accountBalance;
+    @Column(name = "CURRENT_BALANCE")
+    private Double currentBalance;
 
 }
