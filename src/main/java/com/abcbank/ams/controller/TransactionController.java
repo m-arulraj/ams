@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/transaction")
 @SecurityRequirement(name = "authorize")
+@CrossOrigin
 public class TransactionController {
 
     @Autowired

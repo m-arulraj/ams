@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/account")
 @SecurityRequirement(name = "authorize")
+@CrossOrigin
 public class AccountController {
 
     @Autowired
